@@ -28,31 +28,31 @@ struct ThumbnailGenerator {
         }
     }
 
-    static func createThumbnail(with icon: ThumbnailIcon) -> UNNotificationAttachment? {
-        let name = "thumbnail"
-        let thumbnailFrame = CGRect(x: 0, y: 0, width: 150, height: 150)
-        let thumbnail = UIView(frame: thumbnailFrame)
-        thumbnail.isOpaque = false
-        let label = UILabel(frame: thumbnailFrame)
-        label.text = icon.textValue
-        label.font = UIFont.systemFont(ofSize: 125)
-        label.textAlignment = .center
-        thumbnail.addSubview(label)
+    // static func createThumbnail(with icon: ThumbnailIcon) -> UNNotificationAttachment? {
+    //     let name = "thumbnail"
+    //     let thumbnailFrame = CGRect(x: 0, y: 0, width: 150, height: 150)
+    //     let thumbnail = UIView(frame: thumbnailFrame)
+    //     thumbnail.isOpaque = false
+    //     let label = UILabel(frame: thumbnailFrame)
+    //     label.text = icon.textValue
+    //     label.font = UIFont.systemFont(ofSize: 125)
+    //     label.textAlignment = .center
+    //     thumbnail.addSubview(label)
 
-        do {
-            let thumbnailImage = try thumbnail.renderAsImage()
-            let localURL = try thumbnailImage.persist(fileName: name)
-            return try UNNotificationAttachment(
-                identifier: "\(SwiftWorkmanagerPlugin.identifier).\(name)",
-                url: localURL,
-                options: nil
-            )
-        } catch {
-            logInfo("\(logPrefix) \(#function) something went wrong creating a thumbnail for local debug notification")
-            return nil
-        }
+    //     do {
+    //         let thumbnailImage = try thumbnail.renderAsImage()
+    //         let localURL = try thumbnailImage.persist(fileName: name)
+    //         return try UNNotificationAttachment(
+    //             identifier: "\(SwiftWorkmanagerPlugin.identifier).\(name)",
+    //             url: localURL,
+    //             options: nil
+    //         )
+    //     } catch {
+    //         logInfo("\(logPrefix) \(#function) something went wrong creating a thumbnail for local debug notification")
+    //         return nil
+    //     }
 
-    }
+    // }
 
     private static var logPrefix: String {
         return "\(String(describing: SwiftWorkmanagerPlugin.self)) - \(ThumbnailGenerator.self)"

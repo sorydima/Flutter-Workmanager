@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
                   onPressed: () {
                     Workmanager().initialize(
                       callbackDispatcher,
-                      isInDebugMode: true,
+                      isInDebugMode: false,
                     );
                   },
                 ),
